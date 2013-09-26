@@ -25,8 +25,25 @@ five.Board().on('ready', function(){
   socket.on('connect', function(){
     console.log('websocket connected to skynet');
 
+    socket.on('identify', function(data){
+      console.log('connected with socket id: ' + data.socketid);
+      console.log('sending device uuid: ad698900-2546-11e3-87fb-c560cb0ca47b');
+      socket.emit('identity', {uuid: 'ad698900-2546-11e3-87fb-c560cb0ca47b', socketid: data.socketid});
+    });
+
+
     socket.on('message', function(data){
       console.log(data);
+      // var jdata = JSON.parse(data);
+      console.log(data.blink);
+      if (data.blink == 'start'){
+        console.log("strobe request received from skynet");
+        led.strobe();
+      } else {
+        console.log("stop strobe request received from skynet");
+        led.stop().off();
+      }
+      
     });
     socket.on('disconnect', function(){
       console.log('disconnect');
@@ -34,4 +51,30 @@ five.Board().on('ready', function(){
   });
 
 });
+
+
+
+
+
+// socket = io.connect('localhost', {
+//     port: 3000
+// });
+
+// socket.on('connect', function(){
+//   console.log('websocket connected to skynet');
+
+//   socket.on('identify', function(data){
+//     console.log('connected with socket id: ' + data.socketid);
+//     console.log('sending device uuid: ad698900-2546-11e3-87fb-c560cb0ca47b');
+//     socket.emit('identity', {uuid: 'ad698900-2546-11e3-87fb-c560cb0ca47b', socketid: data.socketid});
+//   });
+
+
+//   socket.on('message', function(data){
+//     console.log(data);
+//   });
+//   socket.on('disconnect', function(){
+//     console.log('disconnect');
+//   });
+// });
 
