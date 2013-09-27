@@ -28,9 +28,16 @@ five.Board().on('ready', function(){
     socket.on('identify', function(data){
       console.log('connected with socket id: ' + data.socketid);
       console.log('sending device uuid: ad698900-2546-11e3-87fb-c560cb0ca47b');
-      socket.emit('identity', {uuid: 'ad698900-2546-11e3-87fb-c560cb0ca47b', socketid: data.socketid});
+      socket.emit('identity', {uuid: 'ad698900-2546-11e3-87fb-c560cb0ca47b', socketid: data.socketid, token: 'zh4p7as90pt1q0k98fzvwmc9rmjkyb9'});
     });
 
+    socket.on('authentication', function(data){
+      if (data.status == 201){
+        console.log('authenticated');
+      } else { // 401
+        console.log('not authenticated');
+      }
+    });
 
     socket.on('message', function(data){
       console.log(data);
