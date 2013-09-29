@@ -8,13 +8,20 @@ five.Board().on('ready', function(){
   console.log('Ready');
   button.on('down', function(){
     led.on();
-    request.put('http://localhost:3000/devices/ad698900-2546-11e3-87fb-c560cb0ca47b').form({online:true});
-    console.log('Device online with Skynet');
+    // request.put('http://localhost:3000/devices/ad698900-2546-11e3-87fb-c560cb0ca47b').form({armed:true, token: 'zh4p7as90pt1q0k98fzvwmc9rmjkyb9'});
+    request.put('http://localhost:3000/devices/ad698900-2546-11e3-87fb-c560cb0ca47b', {form:{armed:true, token: 'zh4p7as90pt1q0k98fzvwmc9rmjkyb9'}}, function (error, response, body){
+      console.log(body);
+    });
+
+    console.log('Device armed via Skynet');
   })
   button.on('up', function(){
     led.off();
-    request.put('http://localhost:3000/devices/ad698900-2546-11e3-87fb-c560cb0ca47b').form({online:false});
-    console.log('Device offline with Skynet');
+    // request.put('http://localhost:3000/devices/ad698900-2546-11e3-87fb-c560cb0ca47b').form({armed:false, token: 'zh4p7as90pt1q0k98fzvwmc9rmjkyb9'});
+    request.put('http://localhost:3000/devices/ad698900-2546-11e3-87fb-c560cb0ca47b', {form:{armed:false, token: 'zh4p7as90pt1q0k98fzvwmc9rmjkyb9'}}, function (error, response, body){
+      console.log(body);
+    });
+    console.log('Device unarmed via Skynet');
   })
 
   // Websocket controls
@@ -23,19 +30,19 @@ five.Board().on('ready', function(){
   });
 
   socket.on('connect', function(){
-    console.log('websocket connected to skynet');
+    console.log('Requesting websocket connection to Skynet');
 
     socket.on('identify', function(data){
-      console.log('connected with socket id: ' + data.socketid);
-      console.log('sending device uuid: ad698900-2546-11e3-87fb-c560cb0ca47b');
+      console.log('Websocket connected to Skynet with socket id: ' + data.socketid);
+      console.log('Sending device uuid: ad698900-2546-11e3-87fb-c560cb0ca47b');
       socket.emit('identity', {uuid: 'ad698900-2546-11e3-87fb-c560cb0ca47b', socketid: data.socketid, token: 'zh4p7as90pt1q0k98fzvwmc9rmjkyb9'});
     });
 
     socket.on('authentication', function(data){
       if (data.status == 201){
-        console.log('authenticated');
+        console.log('Device authenticated with Skynet');
       } else { // 401
-        console.log('not authenticated');
+        console.log('Device not authenticated with Skynet');
       }
     });
 
