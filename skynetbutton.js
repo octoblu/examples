@@ -5,6 +5,7 @@ var five = require('johnny-five'), button, led;
 five.Board().on('ready', function(){
   button = new five.Button(8);
   led = new five.Led(13);
+  yled = new five.Led(12);
   console.log('Ready');
   button.on('down', function(){
     led.on();
@@ -53,9 +54,15 @@ five.Board().on('ready', function(){
       if (data.blink == 'start'){
         console.log("strobe request received from skynet");
         led.strobe();
-      } else {
+      } else if(data.blink == 'stop'){
         console.log("stop strobe request received from skynet");
         led.stop().off();
+      } else if(data.yellow == 'on'){
+        console.log("yellow on request received from skynet");
+        yled.on();
+      } else if(data.yellow == 'off'){
+        console.log("yellow off request received from skynet");
+        yled.off();
       }
       
     });
