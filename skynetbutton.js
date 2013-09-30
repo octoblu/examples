@@ -20,11 +20,6 @@ five.Board().on('ready', function(){
 
     // Websocket API
     socket.emit('update', {"uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b", "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9", "armed":true});
-    socket.on('update', function(data){
-      console.log('update received');
-      console.log(data);
-    });
-
 
     console.log('Device armed via Skynet');
   })
@@ -41,10 +36,6 @@ five.Board().on('ready', function(){
 
     // Websocket API
     socket.emit('update', {"uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b", "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9", "armed":false});
-    socket.on('update', function(data){
-      console.log('update received');
-      console.log(data);
-    });
 
     console.log('Device unarmed via Skynet');
   })
@@ -72,11 +63,11 @@ five.Board().on('ready', function(){
     });
 
     // test APIs
-    // socket.emit('status');
-    // socket.on('status', function(data){
-    //   console.log('status received');
-    //   console.log(data);
-    // });
+    socket.emit('status');
+    socket.on('status', function(data){
+      console.log('status received');
+      console.log(data);
+    });
 
     // socket.emit('devices', {"key":"123"});
     // socket.on('devices', function(data){
@@ -97,10 +88,10 @@ five.Board().on('ready', function(){
     // });
 
     // socket.emit('update', {"uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b", "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9", "key":"777"});
-    // socket.on('update', function(data){
-    //   console.log('update received');
-    //   console.log(data);
-    // });
+    socket.on('update', function(data){
+      console.log('update received');
+      console.log(data);
+    });
 
     // socket.emit('unregister', {"uuid":"b5535950-29fd-11e3-9113-0bd381f0b5ef", "token": "2ls40jx80s9bpgb9w2g0vi2li72v5cdi"});
     // socket.on('unregister', function(data){
@@ -109,21 +100,21 @@ five.Board().on('ready', function(){
     // });
 
     // test sending message api
-    // setTimeout(function(){
-    //   socket.emit('message', {"uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b", "body": {"yellow":"on"}});
-    //   // socket.emit('message', {"uuid":"all", "body": {"yellow":"on"}});
-    // },3000);
+    setTimeout(function(){
+      socket.emit('message', {"uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b", "body": {"yellow":"on"}});
+      // socket.emit('message', {"uuid":"all", "body": {"yellow":"on"}});
+    },3000);
 
 
     socket.on('message', function(data){
       console.log(data);
       // var jdata = JSON.parse(data);
       // console.log(data.blink);
-      if (data.blink == 'start'){
+      if (data.blink == true){
         console.log("strobe request received from skynet");
         led.strobe();
         yled.strobe();
-      } else if(data.blink == 'stop'){
+      } else if(data.blink == false){
         console.log("stop strobe request received from skynet");
         led.stop().off();
         yled.stop().off();
