@@ -101,8 +101,7 @@ five.Board().on('ready', function(){
 
     // test sending message api
     setTimeout(function(){
-      socket.emit('message', {"uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b", "body": {"yellow":"on"}});
-      // socket.emit('message', {"uuid":"all", "body": {"yellow":"on"}});
+      socket.emit('message', {"devices": "all", "message": {"yellow":"on"}});
     },3000);
 
 
