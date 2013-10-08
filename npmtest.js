@@ -16,7 +16,7 @@ conn.on('message', function(data){
 conn.send({
   "devices": "all",
   "message": {
-    "contra":"is cool"
+    "red":"on"
   }
 });
 
