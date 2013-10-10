@@ -16,12 +16,13 @@ five.Board().on('ready', function(){
   button.on('down', function(){
     led.on();
 
-    // Websocket API
     conn.update({
       "uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b", 
       "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9", 
       "armed":true
-    });
+    }, function (data) {
+      console.log(data); 
+    });    
 
     console.log('Device armed via Skynet');
   })
@@ -34,7 +35,9 @@ five.Board().on('ready', function(){
       "uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b", 
       "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9", 
       "armed":false
-    });
+    }, function (data) {
+      console.log(data); 
+    });  
 
     console.log('Device unarmed via Skynet');
   })
