@@ -17,14 +17,6 @@ conn.send({
 conn.on('message', function(data){
   console.log('status received');
   console.log(data);
-
-  if (data.request == "register"){
-    conn.unregister({
-      "uuid": data.uuid, 
-      "token": data.token
-    });
-  }
-
 });
 
 // Event triggered when device loses connection to skynet
