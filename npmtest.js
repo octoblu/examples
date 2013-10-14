@@ -3,8 +3,10 @@ var skynet = require('skynet');
 var conn = skynet.createConnection({
   "host":"localhost",
   "port": 3000,
-  "uuid": "ad698900-2546-11e3-87fb-c560cb0ca47b",
-  "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9"
+  // "host":"http://skynet.jit.su",
+  // "port": 80,
+  "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
+  "token": "qirqglm6yb1vpldixflopnux4phtcsor"
 });
 
 conn.on('notReady', function(data){
@@ -25,7 +27,7 @@ conn.on('ready', function(data){
   });
 
   conn.on('message', function(data){
-    console.log('status received');
+    console.log('message received');
     console.log(data);
   });
 
@@ -59,23 +61,33 @@ conn.on('ready', function(data){
 
   // Update device
   conn.update({
-    "uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b", 
-    "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9", 
+    "uuid":"0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", 
+    "token": "qirqglm6yb1vpldixflopnux4phtcsor", 
     "armed":true
   }, function (data) {
     console.log(data); 
   });
 
   // WhoAmI?
-  conn.whoami({"uuid":"ad698900-2546-11e3-87fb-c560cb0ca47b"}, function (data) {
+  conn.whoami({"uuid":"0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc"}, function (data) {
     console.log(data); 
   });
 
   // Receive an array of device UUIDs based on user defined search criteria
   conn.devices({
-    "type":"drone"
+    // "type":"drone"
+    "key":"123456"
   }, function (data) {
     console.log(data); 
+
+    // Send hello world to the array of device uuids
+    conn.send({
+      "devices": data.devices,
+      "message": {
+        "hello":"world"
+      }
+    });
+
   });
 
   // Skynet status
