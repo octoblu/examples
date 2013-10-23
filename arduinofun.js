@@ -12,7 +12,9 @@ var conn = skynet.createConnection({
 
 conn.on('ready', function(data){
 
-  five.Board().on('ready', function(){
+
+  // five.Board().on('ready', function(){
+  five.Board({ port: "/dev/cu.usbmodemfa131"}).on('ready', function(){
 
     button = new five.Button(8);
     led = new five.Led(13);

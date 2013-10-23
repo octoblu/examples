@@ -26,6 +26,22 @@ conn.on('ready', function(data){
     }
   });
 
+  // Subscribe to device
+  conn.subscribe({
+    "uuid": "f828ef20-29f7-11e3-9604-b360d462c699",
+    "token": "syep2lu2d0io1or305llz5u9ijrwwmi"
+  }, function (data) {
+    console.log(data); 
+  });
+
+  // Subscribe to device
+  conn.unsubscribe({
+    "uuid": "f828ef20-29f7-11e3-9604-b360d462c699"
+  }, function (data) {
+    console.log(data); 
+  });
+
+
   conn.on('message', function(data){
     console.log('message received');
     console.log(data);
