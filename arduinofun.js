@@ -2,10 +2,10 @@ var five = require('johnny-five'), button, led;
 var skynet = require('skynet');
 
 var conn = skynet.createConnection({
-  "host":"localhost",
-  "port": 3000,
-  // "host":"http://skynet.jit.su",
-  // "port": 80,
+  // "host":"localhost",
+  // "port": 3000,
+  "host":"http://skynet.jit.su",
+  "port": 80,
   "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
   "token": "qirqglm6yb1vpldixflopnux4phtcsor"
 });
@@ -19,6 +19,11 @@ conn.on('ready', function(data){
     button = new five.Button(8);
     led = new five.Led(13);
     yled = new five.Led(12);
+    servo = new five.Servo({
+      pin: 9
+    });
+    buzz = new five.Led(10);
+
     console.log('Ready');
     button.on('down', function(){
       led.on();
@@ -71,6 +76,22 @@ conn.on('ready', function(data){
         } else if(data.red == 'off'){
           console.log("red off request received from skynet");
           led.off();
+        } else if(data.motor == 'on'){
+          console.log("motor request on received from skynet");
+          // servo.cw();
+          servo.sweep();
+        } else if(data.motor == 'off'){
+          console.log("motor request off received from skynet");
+          // servo.sweep(0);
+          servo.stop();
+        } else if(data.buzz == 'on'){
+          console.log("buzz request on received from skynet");
+          // servo.cw();
+          buzz.on();
+        } else if(data.buzz == 'off'){
+          console.log("buzz request off received from skynet");
+          // servo.sweep(0);
+          buzz.off();
         }
     });
     
