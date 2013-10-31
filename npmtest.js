@@ -118,7 +118,7 @@ conn.on('ready', function(data){
     // "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
     // "token": "qirqglm6yb1vpldixflopnux4phtcsor"
   }, function (data) {
-    console.log(data); 
+    console.log(JSON.stringify(data)); 
   });
 
 
