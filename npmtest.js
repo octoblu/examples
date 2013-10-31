@@ -115,6 +115,8 @@ conn.on('ready', function(data){
   conn.events({
     "uuid": "f828ef20-29f7-11e3-9604-b360d462c699",
     "token": "syep2lu2d0io1or305llz5u9ijrwwmi"
+    // "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
+    // "token": "qirqglm6yb1vpldixflopnux4phtcsor"
   }, function (data) {
     console.log(data); 
   });
