@@ -4,7 +4,7 @@ var skynet = require('skynet');
 var conn = skynet.createConnection({
   // "host":"localhost",
   // "port": 3000,
-  "host":"http://skynet.jit.su",
+  "host":"http://skynet.im",
   "port": 80,
   "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
   "token": "qirqglm6yb1vpldixflopnux4phtcsor"
@@ -13,8 +13,9 @@ var conn = skynet.createConnection({
 conn.on('ready', function(data){
 
 
-  // five.Board().on('ready', function(){
-  five.Board({ port: "/dev/cu.usbmodemfa131"}).on('ready', function(){
+  five.Board().on('ready', function(){
+  // five.Board({ port: "/dev/cu.usbmodemfa131"}).on('ready', function(){
+  // five.Board({ port: "/dev/tty.usbmodem1441"}).on('ready', function(){
 
     button = new five.Button(8);
     led = new five.Led(13);
@@ -27,6 +28,7 @@ conn.on('ready', function(data){
     console.log('Ready');
     button.on('down', function(){
       led.on();
+      yled.on();
 
       conn.update({
         "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
@@ -41,6 +43,7 @@ conn.on('ready', function(data){
 
     button.on('up', function(){
       led.off();
+      yled.off();      
 
       // Websocket API
       conn.update({
@@ -98,5 +101,16 @@ conn.on('ready', function(data){
   });
 
 });
+
+// curl -X POST -d '{"devices":"all", "message":{"yellow":"on"}}' http://localhost:3000/messages
+
+// curl -X POST -d '{"devices":"all", "message":{"yellow":"on"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "message":{"yellow":"off"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "message":{"red":"on"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "message":{"red":"off"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "message":{"blink":true}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "message":{"blink":false}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "message":{"buzz":"on"}}' http://skynet.im/messages
+
 
 

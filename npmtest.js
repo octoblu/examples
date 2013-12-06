@@ -1,10 +1,10 @@
 var skynet = require('skynet');
 
 var conn = skynet.createConnection({
-  "host":"localhost",
-  "port": 3000,
-  // "host":"http://skynet.jit.su",
-  // "port": 80,
+  // "host":"localhost",
+  // "port": 3000,
+  "host":"http://skynet.im",
+  "port": 80,
   "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
   "token": "qirqglm6yb1vpldixflopnux4phtcsor"
 });
