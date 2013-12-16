@@ -38,6 +38,13 @@ conn.on('ready', function(data){
         console.log(data); 
       });    
 
+      conn.send({
+        "devices": "f1b7fe90-653b-11e3-b2eb-91cf874fce76",
+        "message": {
+          "red":"on"
+        }
+      });
+
       console.log('Device armed via Skynet');
     })
 
@@ -53,6 +60,13 @@ conn.on('ready', function(data){
       }, function (data) {
         console.log(data); 
       });  
+
+      conn.send({
+        "devices": "f1b7fe90-653b-11e3-b2eb-91cf874fce76",
+        "message": {
+          "red":"off"
+        }
+      });
 
       console.log('Device unarmed via Skynet');
     })
