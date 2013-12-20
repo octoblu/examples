@@ -24,16 +24,18 @@ conn.on('ready', function(data){
     lcd.on("ready", function() {
       conn.on('message', function(data){
 
-        lcd.useChar('heart');
-        lcd.clear().print(data.text);
-        // lcd.cursor(1, 0);
-        // lcd.print("We :heart: johnny-five");
-
+        if (data.text != "undefined") {
+          // lcd.useChar('heart');
+          if (data.text == 'clear'){
+            lcd.clear()
+          } else {
+            lcd.clear().print(data.text);
+            lcd.cursor(1, 0);
+            lcd.print("via SKYNET.im");                      
+          }
+        }
       });
     });
-   
-   
   });
-
 
 });
