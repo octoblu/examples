@@ -25,7 +25,7 @@ conn.on('ready', function(data){
       conn.on('message', function(data){
 
         if (data.text != "undefined") {
-          // lcd.useChar('heart');
+          lcd.useChar('heart');
           if (data.text == 'clear'){
             lcd.clear()
           } else {
