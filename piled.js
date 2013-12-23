@@ -14,6 +14,8 @@ var conn = skynet.createConnection({
 conn.on('ready', function(data){
 
   console.log('Connected to Skynet');
+  led.writeSync(1);
+  setTimeout(function(){led.writeSync(0);},500);
 
   conn.on('message', function(data){
       console.log(data);
