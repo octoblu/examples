@@ -97,7 +97,7 @@ conn.on('ready', function(data){
     console.log(data); 
 
     // Send hello world to the array of device uuids
-    conn.send({
+    conn.message({
       "devices": data.devices,
       "message": {
         "hello":"world"
