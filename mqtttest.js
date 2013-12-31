@@ -28,7 +28,7 @@ conn.on('ready', function(data){
     console.log(data);
   });
 
-  Send and receive messages
+  // Send and receive messages
   conn.message({
     "devices": "*",
     "message": {
