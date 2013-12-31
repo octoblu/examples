@@ -33,21 +33,24 @@ conn.on('ready', function(data){
     "devices": "*",
     "message": {
       "test":"54321"
-    }
+    },
+    "qos": 0
   });
 
   conn.message({
     "devices": ["0000", "1234567890"],
     "message": {
       "test":"12345"
-    }
+    },
+    "qos": 0
   });
 
   conn.message({
     "devices": "0000",
     "message": {
       "test":"0000"
-    }
+    },
+    "qos": 0
   });
 
 
