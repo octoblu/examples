@@ -2,10 +2,6 @@ var five = require('johnny-five'), button, led;
 var skynet = require('skynet');
 
 var conn = skynet.createConnection({
-  // "host":"localhost",
-  // "port": 3000,
-  "host":"http://skynet.im",
-  "port": 80,
   "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
   "token": "qirqglm6yb1vpldixflopnux4phtcsor"
 });
@@ -38,7 +34,7 @@ conn.on('ready', function(data){
         console.log(data); 
       });    
 
-      conn.send({
+      conn.message({
         "devices": "f1b7fe90-653b-11e3-b2eb-91cf874fce76",
         "message": {
           "red":"on"
@@ -61,7 +57,7 @@ conn.on('ready', function(data){
         console.log(data); 
       });  
 
-      conn.send({
+      conn.message({
         "devices": "f1b7fe90-653b-11e3-b2eb-91cf874fce76",
         "message": {
           "red":"off"
@@ -71,8 +67,9 @@ conn.on('ready', function(data){
       console.log('Device unarmed via Skynet');
     })
 
-    conn.on('message', function(data){
-        console.log(data);
+    conn.on('message', function(channel, databits){
+        console.log(databits);
+        data = JSON.parse(databits);
         if (data.blink == true){
           console.log("strobe request received from skynet");
           led.strobe();

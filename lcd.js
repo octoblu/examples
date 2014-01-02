@@ -5,10 +5,6 @@ board = new five.Board();
 var skynet = require('skynet');
 
 var conn = skynet.createConnection({
-  // "host":"localhost",
-  // "port": 3000,
-  "host":"http://skynet.im",
-  "port": 80,
   "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
   "token": "qirqglm6yb1vpldixflopnux4phtcsor"
 });
@@ -22,7 +18,9 @@ conn.on('ready', function(data){
     });
    
     lcd.on("ready", function() {
-      conn.on('message', function(data){
+      conn.on('message', function(channel, databits){
+        console.log(databits);
+        data = JSON.parse(databits);
 
         if (data.text != "undefined") {
           lcd.useChar('heart');

@@ -1,12 +1,9 @@
 var skynet = require('skynet');
 
 var conn = skynet.createConnection({
-  // "host":"localhost",
-  // "port": 3000,
-  "host":"http://skynet.im",
-  "port": 80,
   "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
-  "token": "qirqglm6yb1vpldixflopnux4phtcsor"
+  "token": "qirqglm6yb1vpldixflopnux4phtcsor",
+  "qos":0
 });
 
 conn.on('notReady', function(data){
@@ -19,8 +16,8 @@ conn.on('ready', function(data){
   console.log(data);
 
   // Send and receive messages
-  conn.send({
-    "devices": "all",
+  conn.message({
+    "devices": "*",
     "message": {
       "skynet":"online"
     }
@@ -42,8 +39,9 @@ conn.on('ready', function(data){
   });
 
 
-  conn.on('message', function(data){
+  conn.on('message', function(channel, data){
     console.log('message received');
+    console.log(channel);
     console.log(data);
   });
 
