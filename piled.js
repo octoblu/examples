@@ -19,7 +19,7 @@ conn.on('ready', function(data){
       if(data.red == 'on'){
         console.log("red on request received from skynet");
         led.writeSync(1);
-        conn.send({
+        conn.message({
           "devices": "*",
           "message": {
             "red":"on"
@@ -28,7 +28,7 @@ conn.on('ready', function(data){
       } else if(data.red == 'off'){
         console.log("red off request received from skynet");
         led.writeSync(0);
-        conn.send({
+        conn.message({
           "devices": "*",
           "message": {
             "red":"off"
