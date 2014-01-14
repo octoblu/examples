@@ -1,5 +1,5 @@
-var skynet = require('../npm');
-// var skynet = require('skynet');
+// var skynet = require('../npm');
+var skynet = require('skynet');
 
 var conn = skynet.createConnection({
   // "host":"localhost",
@@ -50,14 +50,14 @@ conn.on('ready', function(data){
   conn.message({
     "devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
     "message": {
-      "test":"0000"
+      "text":"This is an MQTT message sent through @SkyNetIM to @NodeRed"
     },
     "qos": 0
   });
   conn.message({
     "devices": "1234567890",
     "message": {
-      "test":"0001"
+      "text":"This is an MQTT message sent through @SkyNetIM to @NodeRed"
     },
     "qos": 0
   });

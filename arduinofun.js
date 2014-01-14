@@ -3,7 +3,8 @@ var skynet = require('skynet');
 
 var conn = skynet.createConnection({
   "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
-  "token": "qirqglm6yb1vpldixflopnux4phtcsor"
+  "token": "qirqglm6yb1vpldixflopnux4phtcsor",
+  "protocol":"websocket"
 });
 
 conn.on('ready', function(data){
@@ -67,9 +68,9 @@ conn.on('ready', function(data){
       console.log('Device unarmed via Skynet');
     })
 
-    conn.on('message', function(channel, databits){
-        console.log(databits);
-        data = JSON.parse(databits);
+    conn.on('message', function(channel, data){
+        console.log(data);
+        // data = JSON.parse(databits);
         if (data.blink == true){
           console.log("strobe request received from skynet");
           led.strobe();
