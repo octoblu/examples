@@ -41,6 +41,14 @@ conn.on('ready', function(data){
     console.log(data); 
   });
 
+  // Authentication check
+  conn.authenticate({
+    "uuid": "f828ef20-29f7-11e3-9604-b360d462c699",
+    "token": "syep2lu2d0io1or305llz5u9ijrwwmi"
+  }, function (data) {
+    console.log(data); 
+  });
+  
 
   conn.on('message', function(channel, data){
     console.log('message received');

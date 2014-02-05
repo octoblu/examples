@@ -13,26 +13,52 @@ conn.on('ready', function(data){
   conn.on('message', function(channel, data){
 
     console.log(data);
+    try{
+      data = JSON.parse(data);
+    } catch(e){
+      console.log(e);
+    }
 
         // curl -X PUT -d '{"on":false}' http://172.22.111.174/api/newdeveloper/lights/2/state/
         // curl -X PUT -d '{"on":true}' http://172.22.111.174/api/newdeveloper/lights/2/state/
 
     // {"on":true, "sat":255, "bri":1,"hue": 50000}
     if (data.on != undefined){
-      request(
-        { method: 'PUT'
-        , uri: 'http://172.22.111.174/api/newdeveloper/lights/2/state/'
-        , body: JSON.stringify({"on": data.on})
+      try {
+        request(
+          { method: 'PUT'
+          , uri: 'http://10.10.1.180/api/newdeveloper/lights/1/state/'
+          , body: JSON.stringify({"on": data.on})
 
-      });
+        });
+        request(
+          { method: 'PUT'
+          , uri: 'http://10.10.1.180/api/newdeveloper/lights/3/state/'
+          , body: JSON.stringify({"on": data.on})
+
+        });
+
+      } catch(e){
+        console.log(e);
+      }
 
     } else if  (data.hue != undefined){
-      request(
-        { method: 'PUT'
-        , uri: 'http://172.22.111.174/api/newdeveloper/lights/2/state/'
-        , body: JSON.stringify({"hue": data.hue})
+      try {
+        request(
+          { method: 'PUT'
+          , uri: 'http://10.10.1.180/api/newdeveloper/lights/1/state/'
+          , body: JSON.stringify({"hue": data.hue})
 
-      });   
+        });   
+        request(
+          { method: 'PUT'
+          , uri: 'http://10.10.1.180/api/newdeveloper/lights/3/state/'
+          , body: JSON.stringify({"hue": data.hue})
+
+        });   
+      } catch(e){
+        console.log(e);
+      }
     }
 
 
