@@ -15,25 +15,17 @@ conn.on('ready', function(data){
 
   conn.on('message', function(channel, databits){
       console.log(databits);
-      data = JSON.parse(databits);
+      if(typeof databits !== 'object'){
+        data = JSON.parse(databits);
+      } else {
+        data = databits;        
+      }     
       if(data.red == 'on'){
         console.log("red on request received from skynet");
         led.writeSync(1);
-        conn.message({
-          "devices": "*",
-          "message": {
-            "red":"on"
-          }
-        });
       } else if(data.red == 'off'){
         console.log("red off request received from skynet");
         led.writeSync(0);
-        conn.message({
-          "devices": "*",
-          "message": {
-            "red":"off"
-          }
-        });
       } 
 
   });
