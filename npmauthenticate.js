@@ -14,6 +14,7 @@ conn.on('notReady', function(data){
   }, function (data) {
     console.log(data); 
 
+    // Login to SkyNet to fire onready event
     conn.authenticate({
       "uuid": data.uuid, 
       "token": data.token
