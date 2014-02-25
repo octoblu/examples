@@ -18,10 +18,10 @@ conn.on('ready', function(data){
   // socket.emit('gatewayConfig', {uuid: "4935a683-c960-4814-8dba-2e7629e5a809", token: "c81d29a7698d4df0aa3edb0ab422e0e", method: "getPlugins"}, function(data){console.log(data);});      
   conn.config({
     uuid: "4935a683-c960-4814-8dba-2e7629e5a809", 
-    token: "c81d29a7698d4df0aa3edb0ab422e0ex", 
+    token: "c81d29a7698d4df0aa3edb0ab422e0e", 
     method: "getPlugins"
   }, function (data) {
-    console.log(data); 
+    console.log(JSON.stringify(data)); 
   });
 
   // { result:
@@ -41,6 +41,14 @@ conn.on('ready', function(data){
   //        _resolved: 'https://registry.npmjs.org/skynet-greeting/-/skynet-greeting-0.2.0.tgz',
   //        dependencies: {},
   //        peerDependencies: {} } ] }
+
+  conn.config({
+    uuid: "4935a683-c960-4814-8dba-2e7629e5a809", 
+    token: "c81d29a7698d4df0aa3edb0ab422e0e", 
+    method: "getSubdevices"
+  }, function (data) {
+    console.log(data); 
+  });
 
 
 });
