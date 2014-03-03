@@ -29,8 +29,8 @@ socket.on('connect', function(){
       //     "hello":"world"
       //   }
       // });
-      socket.on('message', function(channel, message){
-        console.log('message received', channel, message);
+      socket.on('message', function(message){
+        console.log('message received', message);
       });
 
       // Test API calls

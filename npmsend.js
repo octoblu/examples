@@ -37,9 +37,8 @@ conn.on('ready', function(data){
   // });
 
 
-  conn.on('message', function(channel, data){
+  conn.on('message', function(data){
     console.log('message received');
-    console.log(channel);
     console.log(data);
   });
 

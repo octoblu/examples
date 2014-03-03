@@ -10,7 +10,7 @@ var conn = skynet.createConnection({
 conn.on('ready', function(data){
 
   console.log('Ready');
-  conn.on('message', function(channel, data){
+  conn.on('message', function(data){
 
     console.log(data);
     try{
@@ -23,18 +23,18 @@ conn.on('ready', function(data){
         // curl -X PUT -d '{"on":true}' http://172.22.111.174/api/newdeveloper/lights/2/state/
 
     // {"on":true, "sat":255, "bri":1,"hue": 50000}
-    if (data.on != undefined){
+    if (data.message.on != undefined){
       try {
         request(
           { method: 'PUT'
           , uri: 'http://10.10.1.180/api/newdeveloper/lights/1/state/'
-          , body: JSON.stringify({"on": data.on})
+          , body: JSON.stringify({"on": data.message.on})
 
         });
         request(
           { method: 'PUT'
           , uri: 'http://10.10.1.180/api/newdeveloper/lights/3/state/'
-          , body: JSON.stringify({"on": data.on})
+          , body: JSON.stringify({"on": data.message.on})
 
         });
 
@@ -42,18 +42,18 @@ conn.on('ready', function(data){
         console.log(e);
       }
 
-    } else if  (data.hue != undefined){
+    } else if  (data.message.hue != undefined){
       try {
         request(
           { method: 'PUT'
           , uri: 'http://10.10.1.180/api/newdeveloper/lights/1/state/'
-          , body: JSON.stringify({"hue": data.hue})
+          , body: JSON.stringify({"hue": data.message.hue})
 
         });   
         request(
           { method: 'PUT'
           , uri: 'http://10.10.1.180/api/newdeveloper/lights/3/state/'
-          , body: JSON.stringify({"hue": data.hue})
+          , body: JSON.stringify({"hue": data.message.hue})
 
         });   
       } catch(e){

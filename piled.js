@@ -13,17 +13,17 @@ conn.on('ready', function(data){
   led.writeSync(1);
   setTimeout(function(){led.writeSync(0);},500);
 
-  conn.on('message', function(channel, databits){
+  conn.on('message', function(databits){
       console.log(databits);
       if(typeof databits !== 'object'){
         data = JSON.parse(databits);
       } else {
         data = databits;        
       }     
-      if(data.red == 'on'){
+      if(data.message.red == 'on'){
         console.log("red on request received from skynet");
         led.writeSync(1);
-      } else if(data.red == 'off'){
+      } else if(data.message.red == 'off'){
         console.log("red off request received from skynet");
         led.writeSync(0);
       } 

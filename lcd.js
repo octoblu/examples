@@ -19,8 +19,7 @@ conn.on('ready', function(data){
     });
    
     lcd.on("ready", function() {
-      conn.on('message', function(channel, databits){
-        console.log(channel);
+      conn.on('message', function(databits){
         console.log(databits);
         if(typeof databits !== 'object'){
           data = JSON.parse(databits);
@@ -30,12 +29,12 @@ conn.on('ready', function(data){
         
         data = JSON.parse(databits);
 
-        if (data.text != "undefined") {
+        if (data.message.text != "undefined") {
           lcd.useChar('heart');
-          if (data.text == 'clear'){
+          if (data.message.text == 'clear'){
             lcd.clear()
           } else {
-            lcd.clear().print(data.text);
+            lcd.clear().print(data.message.text);
             lcd.cursor(1, 0);
             lcd.print("via SKYNET.im");                      
           }

@@ -109,24 +109,24 @@ five.Board().on('ready', function(){
       console.log(data);
       // var jdata = JSON.parse(data);
       // console.log(data.blink);
-      if (data.blink == true){
+      if (data.message.blink == true){
         console.log("strobe request received from skynet");
         led.strobe();
         yled.strobe();
-      } else if(data.blink == false){
+      } else if(data.message.blink == false){
         console.log("stop strobe request received from skynet");
         led.stop().off();
         yled.stop().off();
-      } else if(data.yellow == 'on'){
+      } else if(data.message.yellow == 'on'){
         console.log("yellow on request received from skynet");
         yled.on();
-      } else if(data.yellow == 'off'){
+      } else if(data.message.yellow == 'off'){
         console.log("yellow off request received from skynet");
         yled.off();
-      } else if(data.red == 'on'){
+      } else if(data.message.red == 'on'){
         console.log("red on request received from skynet");
         led.on();
-      } else if(data.red == 'off'){
+      } else if(data.message.red == 'off'){
         console.log("red off request received from skynet");
         led.off();
       }

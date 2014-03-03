@@ -15,7 +15,7 @@ conn.on('ready', function(data){
     "message": "this is a test from skynet"
   });
 
-  conn.on('message', function(channel, data){
+  conn.on('message', function(data){
       console.log(data);
   });
 
