@@ -12,7 +12,7 @@ var conn = skynet.createConnection({
 conn.on('ready', function(data){
 
   console.log("Connected to SkyNet");
-  conn.on('message', function(channel, databits){
+  conn.on('message', function(databits){
     console.log(databits);
     data = JSON.parse(databits);
 

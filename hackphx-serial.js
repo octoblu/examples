@@ -45,7 +45,7 @@ conn.on('ready', function(data){
     //   sendString(string);
     // }, 1000);
 
-    conn.on('message', function(channel, data){
+    conn.on('message', function(data){
       console.log(data);
       if(typeof data !== 'object'){
         data = JSON.parse(data);

@@ -68,7 +68,7 @@ conn.on('ready', function(data){
       console.log('Device unarmed via Skynet');
     })
 
-    conn.on('message', function(channel, data){
+    conn.on('message', function(data){
         console.log(data);
         // data = JSON.parse(databits);
         if (data.blink == true){

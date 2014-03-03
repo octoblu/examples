@@ -6,9 +6,9 @@ var conn = skynet.createConnection({
   "token": "qirqglm6yb1vpldixflopnux4phtcsor",
   // "protocol": "mqtt",
   // "qos": 0
-  "protocol": "websocket",
-  "host": "localhost",
-  "port": 3000
+  "protocol": "websocket"
+  // "host": "localhost",
+  // "port": 3000
 });
 
 conn.on('notReady', function(data){
@@ -52,9 +52,8 @@ conn.on('ready', function(data){
   });
   
 
-  conn.on('message', function(channel, data){
+  conn.on('message', function(data){
     console.log('message received');
-    console.log(channel);
     console.log(data);
   });
 

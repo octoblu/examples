@@ -4,7 +4,7 @@ var Cylon = require("cylon");
 var conn = skynet.createConnection({
   "uuid": "742401f1-87a4-11e3-834d-670dadc0ddbf",
   "token": "xjq9h3yzhemf5hfrme8y08fh0sm50zfr",
-  "protocol": "mqtt"
+  "protocol": "websocket"
 });
 
 conn.on('ready', function(data){
@@ -21,7 +21,7 @@ conn.on('ready', function(data){
       // we do our thing here
       // every((1).second(), function() { my.led.toggle(); });
 
-        conn.on('message', function(channel, data){
+        conn.on('message', function(data){
           console.log(data);
           data = JSON.parse(data);
           if(data.red == 'on'){

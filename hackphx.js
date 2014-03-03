@@ -20,14 +20,14 @@ conn.on('ready', function(data){
     console.log("Ready");
     led = new five.Led(17);
 
-    conn.on('message', function(channel, data){
+    conn.on('message', function(data){
       console.log(data);
       if(typeof data !== 'object'){
         data = JSON.parse(data);
       }
 
-      if (data.led != "undefined") {
-        if(data.led == true){
+      if (data.message.led != "undefined") {
+        if(data.message.led == true){
           // led.strobe();
           led.on();
         } else {
