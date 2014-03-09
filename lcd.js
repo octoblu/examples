@@ -29,12 +29,12 @@ conn.on('ready', function(data){
         
         data = JSON.parse(databits);
 
-        if (data.message.text != "undefined") {
+        if (data.payload.text != "undefined") {
           lcd.useChar('heart');
-          if (data.message.text == 'clear'){
+          if (data.payload.text == 'clear'){
             lcd.clear()
           } else {
-            lcd.clear().print(data.message.text);
+            lcd.clear().print(data.payload.text);
             lcd.cursor(1, 0);
             lcd.print("via SKYNET.im");                      
           }

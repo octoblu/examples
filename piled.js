@@ -20,10 +20,10 @@ conn.on('ready', function(data){
       } else {
         data = databits;        
       }     
-      if(data.message.red == 'on'){
+      if(data.payload.red == 'on'){
         console.log("red on request received from skynet");
         led.writeSync(1);
-      } else if(data.message.red == 'off'){
+      } else if(data.payload.red == 'off'){
         console.log("red off request received from skynet");
         led.writeSync(0);
       } 

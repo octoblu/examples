@@ -23,7 +23,7 @@ conn.on('ready', function(data){
         // curl -X PUT -d '{"on":true}' http://172.22.111.174/api/newdeveloper/lights/2/state/
 
     // {"on":true, "sat":255, "bri":1,"hue": 50000}
-    if (data.message.on != undefined){
+    if (data.payload.on != undefined){
       try {
         request(
           { method: 'PUT'
@@ -42,7 +42,7 @@ conn.on('ready', function(data){
         console.log(e);
       }
 
-    } else if  (data.message.hue != undefined){
+    } else if  (data.payload.hue != undefined){
       try {
         request(
           { method: 'PUT'

@@ -1,9 +1,13 @@
 var skynet = require('skynet');
 
 var conn = skynet.createConnection({
-  "uuid": "742401f1-87a4-11e3-834d-670dadc0ddbf",
-  "token": "xjq9h3yzhemf5hfrme8y08fh0sm50zfr",
-  "protocol": "mqtt"
+  "uuid": "a587eb41-a292-11e3-ad2d-c5fcbb05136c",
+  "token": "2715lxsogusdcxrmtqdj7hwzcdz33di",
+  "protocol": "websocket"
+});
+
+conn.on('notReady', function(data){
+  console.log('not ready', data);
 });
 
 conn.on('ready', function(data){
@@ -12,7 +16,7 @@ conn.on('ready', function(data){
 
   conn.message({
     "devices": "2bf8d781-89d3-11e3-834d-670dadc0ddbf",
-    "message": "this is a test from skynet"
+    "payload": "this is a test from skynet"
   });
 
   conn.on('message', function(data){

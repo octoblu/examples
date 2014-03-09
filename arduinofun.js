@@ -37,7 +37,7 @@ conn.on('ready', function(data){
 
       conn.message({
         "devices": "f1b7fe90-653b-11e3-b2eb-91cf874fce76",
-        "message": {
+        "payload": {
           "red":"on"
         }
       });
@@ -60,7 +60,7 @@ conn.on('ready', function(data){
 
       conn.message({
         "devices": "f1b7fe90-653b-11e3-b2eb-91cf874fce76",
-        "message": {
+        "payload": {
           "red":"off"
         }
       });
@@ -114,15 +114,15 @@ conn.on('ready', function(data){
 
 });
 
-// curl -X POST -d '{"devices":"all", "message":{"yellow":"on"}}' http://localhost:3000/messages
+// curl -X POST -d '{"devices":"all", "payload":{"yellow":"on"}}' http://localhost:3000/messages
 
-// curl -X POST -d '{"devices":"all", "message":{"yellow":"on"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices":"all", "message":{"yellow":"off"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices":"all", "message":{"red":"on"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices":"all", "message":{"red":"off"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices":"all", "message":{"blink":true}}' http://skynet.im/messages
-// curl -X POST -d '{"devices":"all", "message":{"blink":false}}' http://skynet.im/messages
-// curl -X POST -d '{"devices":"all", "message":{"buzz":"on"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "payload":{"yellow":"on"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "payload":{"yellow":"off"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "payload":{"red":"on"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "payload":{"red":"off"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "payload":{"blink":true}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "payload":{"blink":false}}' http://skynet.im/messages
+// curl -X POST -d '{"devices":"all", "payload":{"buzz":"on"}}' http://skynet.im/messages
 
 
 

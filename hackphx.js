@@ -26,8 +26,8 @@ conn.on('ready', function(data){
         data = JSON.parse(data);
       }
 
-      if (data.message.led != "undefined") {
-        if(data.message.led == true){
+      if (data.payload.led != "undefined") {
+        if(data.payload.led == true){
           // led.strobe();
           led.on();
         } else {

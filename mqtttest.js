@@ -49,14 +49,14 @@ conn.on('ready', function(data){
 
   conn.message({
     "devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
-    "message": {
+    "payload": {
       "text":"This is an MQTT message sent through @SkyNetIM to @NodeRed"
     },
     "qos": 0
   });
   conn.message({
     "devices": "1234567890",
-    "message": {
+    "payload": {
       "text":"This is an MQTT message sent through @SkyNetIM to @NodeRed"
     },
     "qos": 0

@@ -23,7 +23,7 @@ conn.on('ready', function(data){
   // Send and receive messages
   conn.message({
     "devices": "*",
-    "message": {
+    "payload": {
       "skynet":"online"
     }
   });
@@ -109,7 +109,7 @@ conn.on('ready', function(data){
     // Send hello world to the array of device uuids
     conn.message({
       "devices": data.devices,
-      "message": {
+      "payload": {
         "hello":"world"
       }
     });

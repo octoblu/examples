@@ -2,9 +2,13 @@ var skynet = require('skynet');
 var Cylon = require("cylon");
 
 var conn = skynet.createConnection({
-  "uuid": "742401f1-87a4-11e3-834d-670dadc0ddbf",
-  "token": "xjq9h3yzhemf5hfrme8y08fh0sm50zfr",
+  "uuid": "a587eb41-a292-11e3-ad2d-c5fcbb05136c",
+  "token": "2715lxsogusdcxrmtqdj7hwzcdz33di",
   "protocol": "websocket"
+});
+
+conn.on('notReady', function(data){
+  console.log('not ready', data);
 });
 
 conn.on('ready', function(data){
@@ -23,12 +27,14 @@ conn.on('ready', function(data){
 
         conn.on('message', function(data){
           console.log(data);
-          data = JSON.parse(data);
-          if(data.red == 'on'){
+          if(typeof data == "string"){
+            data = JSON.parse(data);
+          }             
+          if(data.payload.red == 'on'){
             console.log("red on request received from skynet");
             my.led.turnOn();
 
-          } else if(data.red == 'off'){
+          } else if(data.payload.red == 'off'){
             console.log("red off request received from skynet");
             my.led.turnOff();
           }     

@@ -16,25 +16,25 @@ conn.on('ready', function(data){
     console.log(databits);
     data = JSON.parse(databits);
 
-    if (data.fly == "up") {
+    if (data.payload.fly == "up") {
       client.takeoff();
-    } else if (data.fly == "down") {
+    } else if (data.payload.fly == "down") {
       client.land();
-    } else if (data.fly == "stop") {
+    } else if (data.payload.fly == "stop") {
       client.stop();
-    } else if (data.fly == "spin") {
+    } else if (data.payload.fly == "spin") {
       client.clockwise(0.5);
-    } else if (data.fly == "flip") {
+    } else if (data.payload.fly == "flip") {
       client.animate('flipLeft', 1000);
-    } else if (data.red == "on") {
+    } else if (data.payload.red == "on") {
       client.animateLeds('blinkRed', 5, 2)
-    } else if (data.red == "off") {
+    } else if (data.payload.red == "off") {
       client.animateLeds('blinkRed', 0, 0)
-    } else if (data.green == "on") {
+    } else if (data.payload.green == "on") {
       client.animateLeds('blinkGreen', 5, 2)
-    } else if (data.green == "off") {
+    } else if (data.payload.green == "off") {
       client.animateLeds('blinkGreen', 0, 0)
-    } else if (data.demo == true) {
+    } else if (data.payload.demo == true) {
       client.takeoff();
       client
         .after(5000, function() {
@@ -50,16 +50,16 @@ conn.on('ready', function(data){
 
 });
 
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"red":"on"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"red":"off"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"red":"on"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"red":"off"}}' http://skynet.im/messages
 
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"green":"on"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"green":"off"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"green":"on"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"green":"off"}}' http://skynet.im/messages
 
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"fly":"up"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"fly":"down"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"fly":"stop"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"fly":"spin"}}' http://skynet.im/messages
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"fly":"flip"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"fly":"up"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"fly":"down"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"fly":"stop"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"fly":"spin"}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"fly":"flip"}}' http://skynet.im/messages
 
-// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "message": {"demo":true}}' http://skynet.im/messages
+// curl -X POST -d '{"devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", "payload": {"demo":true}}' http://skynet.im/messages

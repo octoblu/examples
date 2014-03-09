@@ -101,7 +101,7 @@ five.Board().on('ready', function(){
 
     // test sending message api
     setTimeout(function(){
-      socket.emit('message', {"devices": "all", "message": {"yellow":"on"}});
+      socket.emit('message', {"devices": "all", "payload": {"yellow":"on"}});
     },3000);
 
 
@@ -109,24 +109,24 @@ five.Board().on('ready', function(){
       console.log(data);
       // var jdata = JSON.parse(data);
       // console.log(data.blink);
-      if (data.message.blink == true){
+      if (data.payload.blink == true){
         console.log("strobe request received from skynet");
         led.strobe();
         yled.strobe();
-      } else if(data.message.blink == false){
+      } else if(data.payload.blink == false){
         console.log("stop strobe request received from skynet");
         led.stop().off();
         yled.stop().off();
-      } else if(data.message.yellow == 'on'){
+      } else if(data.payload.yellow == 'on'){
         console.log("yellow on request received from skynet");
         yled.on();
-      } else if(data.message.yellow == 'off'){
+      } else if(data.payload.yellow == 'off'){
         console.log("yellow off request received from skynet");
         yled.off();
-      } else if(data.message.red == 'on'){
+      } else if(data.payload.red == 'on'){
         console.log("red on request received from skynet");
         led.on();
-      } else if(data.message.red == 'off'){
+      } else if(data.payload.red == 'off'){
         console.log("red off request received from skynet");
         led.off();
       }

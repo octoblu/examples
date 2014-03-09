@@ -19,12 +19,12 @@ conn.on('ready', function(data){
   // Send and receive messages
   conn.message({
     "devices": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
-    "message": {
+    "payload": {
       "skynet":"online"
     }
   });
 
-  conn.on('message', function(channel, data){
+  conn.on('message', function(data){
     console.log('message received');
     console.log(data);
     var endTime = new Date().getTime();
