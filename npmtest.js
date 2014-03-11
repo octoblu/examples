@@ -7,7 +7,7 @@ var conn = skynet.createConnection({
   // "protocol": "mqtt",
   // "qos": 0
   "protocol": "websocket"
-  // "host": "localhost",
+  // "server": "localhost",
   // "port": 3000
 });
 
@@ -33,14 +33,14 @@ conn.on('ready', function(data){
     "uuid": "f828ef20-29f7-11e3-9604-b360d462c699",
     "token": "syep2lu2d0io1or305llz5u9ijrwwmi"
   }, function (data) {
-    console.log(data); 
+    console.log(data);
   });
 
   // Subscribe to device
   conn.unsubscribe({
     "uuid": "f828ef20-29f7-11e3-9604-b360d462c699"
   }, function (data) {
-    console.log(data); 
+    console.log(data);
   });
 
   // Authentication check
@@ -48,9 +48,9 @@ conn.on('ready', function(data){
     "uuid": "f828ef20-29f7-11e3-9604-b360d462c699",
     "token": "syep2lu2d0io1or305llz5u9ijrwwmi"
   }, function (data) {
-    console.log(data); 
+    console.log(data);
   });
-  
+
 
   conn.on('message', function(data){
     console.log('message received');
@@ -64,39 +64,39 @@ conn.on('ready', function(data){
 
   // Register a device
   conn.register({
-    "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9", 
+    "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9",
     "type": "drone"
   }, function (data) {
-    console.log(data); 
+    console.log(data);
     conn.unregister({
-      "uuid": data.uuid, 
+      "uuid": data.uuid,
       "token": data.token
     }, function (data) {
-      console.log(data); 
-    });  
+      console.log(data);
+    });
   });
 
   // UnRegister a device
   // conn.unregister({
-  //   "uuid": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9", 
+  //   "uuid": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9",
   //   "token": "zh4p7as90pt1q0k98fzvwmc9rmjkyb9"
   // }, function (data) {
-  //   console.log(data); 
+  //   console.log(data);
   // });
 
 
   // Update device
   conn.update({
-    "uuid":"0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc", 
-    "token": "qirqglm6yb1vpldixflopnux4phtcsor", 
+    "uuid":"0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
+    "token": "qirqglm6yb1vpldixflopnux4phtcsor",
     "armed":true
   }, function (data) {
-    console.log(data); 
+    console.log(data);
   });
 
   // WhoAmI?
   conn.whoami({"uuid":"0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc"}, function (data) {
-    console.log(data); 
+    console.log(data);
   });
 
   // Receive an array of device UUIDs based on user defined search criteria
@@ -104,7 +104,7 @@ conn.on('ready', function(data){
     // "type":"drone"
     "key":"123456"
   }, function (data) {
-    console.log(data); 
+    console.log(data);
 
     // Send hello world to the array of device uuids
     conn.message({
@@ -118,7 +118,7 @@ conn.on('ready', function(data){
 
   // Skynet status
   conn.status(function (data) {
-    console.log(data); 
+    console.log(data);
   });
 
   // Receive last 10 device events
@@ -128,9 +128,8 @@ conn.on('ready', function(data){
     // "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
     // "token": "qirqglm6yb1vpldixflopnux4phtcsor"
   }, function (data) {
-    console.log(JSON.stringify(data)); 
+    console.log(JSON.stringify(data));
   });
 
 
 });
-

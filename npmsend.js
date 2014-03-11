@@ -4,9 +4,9 @@ var skynet = require('skynet');
 var conn = skynet.createConnection({
   "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
   "token": "qirqglm6yb1vpldixflopnux4phtcsor",
-  "protocol": "websocket"
-  // "host": "localhost",
-  // "port": 3000
+  "protocol": "websocket",
+  "server": "localhost",
+  "port": 3000
 });
 
 conn.on('notReady', function(data){
@@ -43,4 +43,3 @@ conn.on('ready', function(data){
   });
 
 });
-
