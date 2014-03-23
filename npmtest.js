@@ -6,9 +6,9 @@ var conn = skynet.createConnection({
   "token": "qirqglm6yb1vpldixflopnux4phtcsor",
   // "protocol": "mqtt",
   // "qos": 0
-  "protocol": "websocket"
-  // "server": "localhost",
-  // "port": 3000
+  "protocol": "websocket",
+  "server": "localhost",
+  "port": 3000
 });
 
 conn.on('notReady', function(data){
@@ -51,6 +51,14 @@ conn.on('ready', function(data){
     console.log(data);
   });
 
+  // Store sensor data for device
+  conn.data({
+    "uuid": "f828ef20-29f7-11e3-9604-b360d462c699",
+    "token": "syep2lu2d0io1or305llz5u9ijrwwmi",
+    "temperature": 55
+  }, function (data) {
+    console.log(data);
+  });
 
   conn.on('message', function(data){
     console.log('message received');

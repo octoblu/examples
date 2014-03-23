@@ -1,13 +1,13 @@
 var five = require("johnny-five"),
     board, lcd;
- 
+
 board = new five.Board();
 var skynet = require('skynet');
 
 var conn = skynet.createConnection({
   "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
   "token": "qirqglm6yb1vpldixflopnux4phtcsor",
-  "protocol": "mqtt"
+  "protocol": "websocket"
 });
 
 conn.on('ready', function(data){
@@ -17,17 +17,20 @@ conn.on('ready', function(data){
     lcd = new five.LCD({
       pins: [ 8, 9, 4, 5, 6, 7 ],
     });
-   
+
     lcd.on("ready", function() {
       conn.on('message', function(databits){
         console.log(databits);
         if(typeof databits !== 'object'){
           data = JSON.parse(databits);
         } else {
-          data = databits;        
-        }     
-        
-        data = JSON.parse(databits);
+          data = databits;
+        }
+
+        // data = JSON.parse(databits);
+if(typeof databits == "string"){
+  data = JSON.parse(databits);
+}
 
         if (data.payload.text != "undefined") {
           lcd.useChar('heart');
@@ -36,7 +39,7 @@ conn.on('ready', function(data){
           } else {
             lcd.clear().print(data.payload.text);
             lcd.cursor(1, 0);
-            lcd.print("via SKYNET.im");                      
+            lcd.print("via SKYNET.im");
           }
         }
       });
