@@ -6,13 +6,17 @@ var conn = skynet.createConnection({
   // "token": "qirqglm6yb1vpldixflopnux4phtcsor",
   "uuid": "a587eb41-a292-11e3-ad2d-c5fcbb05136c",
   "token": "2715lxsogusdcxrmtqdj7hwzcdz33di"
+  // "server": "localhost",
+  // "port": 3000
+
 
 });
 
 conn.on('ready', function(data){
+  console.log('Connected to SkyNet');
 
-
-  five.Board().on('ready', function(){
+  five.Board({ port: "/dev/cu.usbmodem1451"}).on('ready', function(){
+  // five.Board().on('ready', function(){
     led = new five.Led(13);
     ledy = new five.Led(12);
 
@@ -23,7 +27,7 @@ conn.on('ready', function(data){
         console.log(data);
         if(typeof data == "string"){
           data = JSON.parse(data);
-        }        
+        }
         if(data.payload.red == 'on'){
           console.log("red on request received from skynet");
           led.on();
@@ -50,12 +54,12 @@ conn.on('ready', function(data){
         } else if(data.payload.yellow == 'off'){
           console.log("yellow off request received from skynet");
           ledy.off();
-        } 
+        }
 
       // }
 
     });
-    
+
   });
 
 });

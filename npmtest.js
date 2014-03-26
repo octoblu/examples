@@ -2,13 +2,15 @@ var skynet = require('skynet');
 // var skynet = require('./../npm');
 
 var conn = skynet.createConnection({
-  "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
-  "token": "qirqglm6yb1vpldixflopnux4phtcsor",
+  // "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
+  // "token": "qirqglm6yb1vpldixflopnux4phtcsor",
+  "uuid": "a587eb41-a292-11e3-ad2d-c5fcbb05136c",
+  "token": "2715lxsogusdcxrmtqdj7hwzcdz33di",
   // "protocol": "mqtt",
   // "qos": 0
-  "protocol": "websocket",
-  "server": "localhost",
-  "port": 3000
+  "protocol": "websocket"
+  // "server": "localhost",
+  // "port": 3000
 });
 
 conn.on('notReady', function(data){
