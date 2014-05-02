@@ -1,8 +1,11 @@
-var io = require('socket.io-client')
-socket = io.connect('http://skynet.im', {
-    port: 80
+var io = require('socket.io-client');
+socket = io.connect('https://localhost', {
+    secure: true,
+    port: 3001
+}, function(error){
+  console.log(error);
 });
-
+console.log('attempting connect');
 socket.on('connect', function(){
   console.log('Requesting websocket connection to SkyNet');
 

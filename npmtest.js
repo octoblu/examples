@@ -8,9 +8,9 @@ var conn = skynet.createConnection({
   "token": "2715lxsogusdcxrmtqdj7hwzcdz33di",
   // "protocol": "mqtt",
   // "qos": 0
-  "protocol": "websocket"
-  // "server": "localhost",
-  // "port": 3000
+  "protocol": "websocket",
+  "server": "http://localhost",
+  "port": 3000
 });
 
 conn.on('notReady', function(data){
