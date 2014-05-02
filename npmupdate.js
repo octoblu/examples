@@ -23,15 +23,18 @@ conn.on('ready', function(data){
   conn.update({
     "uuid":"26cc6770-b9eb-11e3-a3c6-0b41aaf824e3",
     "token": "g9ydhs699d9ozuxrwgrt1ov52gap2e29",
-    "settings":{"sensor":true, "GPS":true}
+    "settings":{"sensor":true, "GPS":false},
+    "myArray": ["test1","test2"]
   }, function (data) {
     console.log(data);
+
+    // WhoAmI?
+    conn.whoami({"uuid":"26cc6770-b9eb-11e3-a3c6-0b41aaf824e3"}, function (data) {
+      console.log(data);
+    });
+
   });
 
-  // WhoAmI?
-  conn.whoami({"uuid":"26cc6770-b9eb-11e3-a3c6-0b41aaf824e3"}, function (data) {
-    console.log(data);
-  });
 
 
 });
