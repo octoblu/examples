@@ -25,8 +25,8 @@ conn.on('ready', function(data){
   conn.subscribe({
     // "uuid": "1b6aa961-b3be-11e3-bc92-7f78881a7955",
     // "token": "po04kbj0lfw53ik9iq9jrnegpgbymn29"
-    "uuid": "9060b9b0-d986-11e3-a065-0b9815260ada"
-    // "token": "89bgh38t7y39dx6re8cx2le1t7cwstt9"
+    "uuid": "19768b41-dd23-11e3-a7cd-6fa4d6a0112c",
+    "token": "02du8936gnb9ms4inrbnqwhs9wpi7ldi"
 // "uuid": "99ede351-d6f6-11e3-abcd-1d32e7e917fb",
 // "token": "2xbbrqb89e4b1emiwuvjfzx98sg1ra4i"
 
