@@ -1,5 +1,5 @@
-// var skynet = require('skynet');
-var skynet = require('./../npm');
+var skynet = require('skynet');
+// var skynet = require('./../npm');
 
 var conn = skynet.createConnection({
   "uuid": "196798f1-b5d8-11e3-8c93-45a0c0308eaa",
@@ -8,9 +8,9 @@ var conn = skynet.createConnection({
   // "token": "2715lxsogusdcxrmtqdj7hwzcdz33di",
   // "protocol": "mqtt",
   // "qos": 0
-  "protocol": "websocket",
-  "server": "localhost",
-  "port": 3000
+  "protocol": "websocket"
+  // "server": "localhost",
+  // "port": 3000
 });
 
 conn.on('notReady', function(data){

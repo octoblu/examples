@@ -1,5 +1,5 @@
-var skynet = require('skynet');
-// var skynet = require('./../npm');
+// var skynet = require('skynet');
+var skynet = require('./../npm');
 
 var conn = skynet.createConnection({
   // "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
@@ -12,7 +12,7 @@ var conn = skynet.createConnection({
   "server": "http://localhost",
   "port": 3000
 });
-
+console.log('conecting...');
 conn.on('notReady', function(data){
   console.log('UUID FAILED AUTHENTICATION!');
   console.log(data);
