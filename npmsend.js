@@ -1,12 +1,12 @@
-var skynet = require('skynet');
-// var skynet = require('./../npm');
+// var skynet = require('skynet');
+var skynet = require('./../npm');
 
 var conn = skynet.createConnection({
-  "uuid": "0d3a53a0-2a0b-11e3-b09c-ff4de847b2cc",
-  "token": "qirqglm6yb1vpldixflopnux4phtcsor",
+  "uuid": "f0af1a01-fd5d-11e3-a290-ef9910e207d9",
+  "token": "0wyjcbbffnely2e29zuz9ygnoaymygb9",
   "protocol": "websocket",
-  "server": "localhost",
-  "port": 3000
+  "server": "54.186.44.23",
+  "port": 80
 });
 
 conn.on('notReady', function(data){
@@ -22,7 +22,7 @@ conn.on('ready', function(data){
     console.log("sending message");
     // Send and receive messages
     conn.message({
-      "devices": "5d6e9c91-820e-11e3-a399-f5b85b6b9fd0",
+      "devices": "c33e14c0-fd55-11e3-a290-ef9910e207d9",
       "payload": {
         "hello":"world"
       }
