@@ -4,7 +4,7 @@ var conn = skynet.createConnection({
   "uuid": "aa4f9fe1-0ed7-11e4-ba98-ed547cf24cbd",
   "token": "zlolqmvobl8oajormboq7dvaq8kkpgb9",
   "qos": 0 // MQTT Quality of Service (0=no confirmation, 1=confirmation, 2=N/A)
-  // "host": "localhost", // optional - defaults to skynet.im
+  // "host": "skynet.im", // optional - defaults to skynet.im
   // "port": 1883  // optional - defaults to 1883
 });
 

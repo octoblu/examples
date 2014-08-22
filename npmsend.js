@@ -5,7 +5,7 @@ var conn = skynet.createConnection({
   "uuid": "f0af1a01-fd5d-11e3-a290-ef9910e207d9",
   "token": "0wyjcbbffnely2e29zuz9ygnoaymygb9",
   "protocol": "websocket",
-  "server": "54.186.44.23",
+  "server": "meshblu.octoblu.com",
   "port": 80
 });
 

@@ -15,6 +15,7 @@
     "onoff": "*",
     "socket.io-client": "*",
     "cylon": "*",
-    "skynet-mqtt": "*"
+    "skynet-mqtt": "*",
+    "alljoyn": "*"
   }
 }
