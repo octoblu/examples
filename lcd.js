@@ -1,20 +1,20 @@
-var five = require("johnny-five"),
-    board, lcd;
-
-board = new five.Board();
 var skynet = require('skynet');
 
 var conn = skynet.createConnection({
-  "uuid": "bb875fb1-da10-11e3-a065-0b9815260ada",
-  "token": "0ds1po1c2duyaxlxrbfooataxuu40a4i",
-  "protocol": "websocket"
+  // "uuid": "b9937bc0-3461-11e4-9df4-6fc567623b09",
+  // "token": "00tz16ey76p9cnmikuleqh8397c4bo6r"
 });
 
 conn.on('ready', function(data){
-  console.log('Connected to SkyNet');
+  console.log('Connected to SkyNet', data);
 
+  var five = require("johnny-five"),
+    board, lcd;
+
+  board = new five.Board();
   board.on("ready", function() {
     var back = new five.Pin(10);
+    back.high();
     lcd = new five.LCD({
       pins: [ 8, 9, 4, 5, 6, 7 ],
     });
@@ -39,6 +39,7 @@ conn.on('ready', function(data){
           if (data.payload.text == 'clear'){
             lcd.clear()
           } else {
+            lcd.cursor(0, 0);
             lcd.clear().print(data.payload);
             lcd.cursor(1, 0);
             lcd.print("via SKYNET.im");
