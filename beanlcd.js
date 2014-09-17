@@ -12,6 +12,7 @@ var conn = skynet.createConnection({
   "port": 3000
 });
 
+
 conn.on('ready', function(data){
   console.log('Connected to Meshblu', data);
 
@@ -20,11 +21,15 @@ conn.on('ready', function(data){
 
   board = new five.Board();
   board.on("ready", function() {
+
     var back = new five.Pin(10);
     back.high();
     lcd = new five.LCD({
       pins: [ 8, 9, 4, 5, 6, 7 ],
     });
+    lcd.cursor(0, 0);
+    lcd.clear().print('ready');
+
     lcd.useChar("heart");
     console.log('LCD Ready');
 
